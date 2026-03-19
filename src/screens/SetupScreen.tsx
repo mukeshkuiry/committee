@@ -11,6 +11,7 @@ import {
   Platform,
 } from 'react-native';
 import { saveGroup } from '../storage';
+import { generateId } from '../utils/finance';
 import { Group } from '../types';
 
 interface Props {
@@ -47,7 +48,7 @@ export default function SetupScreen({ onSetupComplete }: Props) {
     }
 
     const group: Group = {
-      id: Date.now().toString(),
+      id: generateId(),
       name: name.trim(),
       monthlyContribution: contribNum,
       interestRate: rateNum,

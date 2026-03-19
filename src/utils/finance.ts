@@ -11,7 +11,7 @@ import {
   savePayments,
 } from '../storage';
 
-const generateId = () => {
+export const generateId = () => {
   return Date.now().toString(36) + Math.random().toString(36).substring(2);
 };
 
@@ -244,6 +244,7 @@ export async function recordPayment(
     if (loans[loanIdx].principalRemaining <= 0 && loans[loanIdx].unpaidInterest <= 0) {
       loans[loanIdx].isActive = false;
       loans[loanIdx].principalRemaining = 0;
+      loans[loanIdx].unpaidInterest = 0;
     }
     if (breakdown.interestPaid > 0) {
       loans[loanIdx].unpaidInterestMonths = 0;

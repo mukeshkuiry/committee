@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import { getGroup, getMembers, saveMembers } from '../storage';
+import { generateId } from '../utils/finance';
 import { Member, Group } from '../types';
 
 export default function MembersScreen() {
@@ -35,7 +36,7 @@ export default function MembersScreen() {
       return;
     }
     const member: Member = {
-      id: Date.now().toString(),
+      id: generateId(),
       groupId: group?.id || '',
       name: newName.trim(),
     };
